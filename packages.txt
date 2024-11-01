@@ -1,0 +1,47 @@
+# Core
+linux
+linux-firmware
+base
+base-devel
+amd-ucode          # Amd-drivers
+bluez              # Bluetooth
+networkmanager     # Network
+neofetch           # System overview
+power-profiles-daemon   # Laptop power profiles
+timeshift          # Automatic backups
+yay                # Package manager
+
+# Desktop
+hyprland           # Dynamic tiling window manager
+hyprpaper          # Wallpaper
+hypridle           # Idle manager
+hyprlock           # Color picker
+hyprshot           # Screenshots
+hyprpicker         # Color picker
+waybar-git         # Title bar
+
+# Cli programs
+btop               # System performance
+ncdu               # Disk usage map
+bat                # File content viewer
+nano               # File editor
+yazi               # File explorer
+git                # git stuff
+zip                # creating zip files
+unzip              # opening zip files
+
+# Programs
+bitwarden          # Password manager
+blender            # 3D modeling
+python             # Python programming
+python-pip         # PIP
+visual-spudio-code-bin    # VSCode
+incscape           # Image creation
+gimp               # Image editing
+firefox            # Web browsing
+kitty              # Terminal
+spotify-launcher   # Spotify
+
+# Fonts
+ttf-fonts-awesome
+ttf-nerd-fonts-symbols
