@@ -46,4 +46,20 @@ https://wiki.archlinux.org/title/Iwd#iwctl
 
 # Set ups
 
+1. Set locale tiem: `ln -sf /usr/share/zoneinfo/Region/City /etc/localtime` followed by: `hwclock --systohc`
+2. Generate locale: `nano /etc/locale.gen` and uncooment desired locale followed by: `locale-gen`
+3. Set system locale: `nano /etc/locale.conf` and type "*LANG=\<locale\>.UTF-8*"
+4. Set console keymap: `nano /etc/vconsole.conf` and type "*KEYMAP=\<keymap\>*"
+5. Set host name: `nano /etc/hosts` and type:
 
+```
+127.0.0.1		localhost
+::1			localhost
+127.0.1.1		<host-name>.localdomain		<host-name>
+```
+
+# Boot into new system
+
+1. Un-mount all partitions: `umount -lR /mnt`
+2. Shutdown system: `shutdown now`
+3. Remove USB-drive and turn the pc back on 
