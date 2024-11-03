@@ -10,9 +10,9 @@
 https://wiki.archlinux.org/title/Iwd#iwctl
 1. `iwctl`
 2. `device list`
-3. `station name scan`
-4. `station name get-networks`
-5. `station name connect SSID`
+3. `station <name> scan`
+4. `station <name> get-networks`
+5. `station <name> connect <SSID>`
 
 # Format disk
 
@@ -23,26 +23,28 @@ https://wiki.archlinux.org/title/Iwd#iwctl
 
 | Space | Type | name | Format | Mount |
 | ----- | ---- | ---- | -------| ----- |
-| 1G | **EFI System** | efi_system_partition | `mkfs.fat -F 32 /dev/efi_system_partition` | `mount --mkdir /dev/efi_system_partition /mnt/boot` |
-| 4-16G | **Linux swap** | swap_partition | `mkswap /dev/swap_partition` | `swapon /dev/swap_partition` |
-| Remaining | **Linux filesystem** | root_partition | `mkfs.ext4 /dev/root_partition` | `mount /dev/root_partition /mnt` |
+| 1G | **EFI System** | efi_system_partition | `mkfs.fat -F 32 /dev/<efi_system_partition>` | `mount --mkdir /dev/<efi_system_partition> /mnt/boot` |
+| 4-16G | **Linux swap** | swap_partition | `mkswap /dev/<swap_partition>` | `swapon /dev/<swap_partition>` |
+| Remaining | **Linux filesystem** | root_partition | `mkfs.ext4 /dev/<root_partition>` | `mount /dev/<root_partition> /mnt` |
+
+3. Format partitions
+4. Mount partitions
 
 # Install Arch-Linux
 
-1. Install: `pacstrap /mnt base  base-devel linux linux-firmware neofetch git sudo nano amd-ucode networkmanager bluez bluez-utils`
-2. Enable network: `systemctl enable NetworkManager`
-3. Enable bluetooth: `systemctl enable bluetooth`
+1. Install: `pacstrap /mnt base  base-devel linux linux-firmware neofetch git sudo nano <amd/intel>-ucode networkmanager bluez bluez-utils`
+2. Generate the file system: `genfstab -U /mnt >> /mnt/etc/fstab`
+3. Jump into the new system: `arch-chroot /mnt`
 
 # Configure the system
 
-1. Generate the file system: `genfstab -U /mnt >> /mnt/etc/fstab`
-2. Jump into the new system: `arch-chroot /mnt`
-3. Set the **root** password: `passwd`
-4. Create a user account: `useradd -m -g users -G wheel,storage,power,video,audio -s /bin/bash <user_name>`
-5. Set **user** password: `passwd <user_name>`
-6. Give user root access: `EDITOR=nano visudo`
-7. Uncomment "*%wheel ALL=(All:All) ALL*"
-8. Check by switching to the user `su - <user_name>` and running `sudo pacman -Syu`. Exit by typing `exit`
+1. Set the **root** password: `passwd`
+2. Create a user account: `useradd -m -g users -G wheel,storage,power,video,audio -s /bin/bash <user_name>`
+3. Set **user** password: `passwd <user_name>`
+4. Give user root access: `EDITOR=nano visudo` and uncomment "*%wheel ALL=(All:All) ALL*"
+5. Check by switching to the user `su - <user_name>` and running `sudo pacman -Syu`. Exit by typing `exit`
+6. Enable network: `systemctl enable NetworkManager`
+7. Enable bluetooth: `systemctl enable bluetooth`
 
 # Set ups
 
@@ -58,8 +60,15 @@ https://wiki.archlinux.org/title/Iwd#iwctl
 127.0.1.1		<host-name>.localdomain		<host-name>
 ```
 
+# Install a bootloader (grub)
+
+1. Install grub: `pacman -S grub efibootmgr dosfstools mtools`
+2. Install grub into boot: `grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB`
+3. Generate grub config file: `grub-mkconfig -o /boot/grub/grub.cfg`
+
 # Boot into new system
 
-1. Un-mount all partitions: `umount -lR /mnt`
-2. Shutdown system: `shutdown now`
-3. Remove USB-drive and turn the pc back on 
+1. Exit installed system: `exit`
+2. Un-mount all partitions: `umount -lR /mnt`
+3. Shutdown system: `shutdown now`
+4. Remove USB-drive and turn the pc back on 
