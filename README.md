@@ -28,7 +28,7 @@ https://wiki.archlinux.org/title/Iwd#iwctl
 | Remaining | **Linux filesystem** | root_partition | `mkfs.ext4 /dev/<root_partition>` | `mount /dev/<root_partition> /mnt` |
 
 3. Format partitions
-4. Mount partitions
+4. Mount partitions (*root_partition before efi_system_partition*)
 
 # Install Arch-Linux
 
@@ -71,4 +71,11 @@ https://wiki.archlinux.org/title/Iwd#iwctl
 1. Exit installed system: `exit`
 2. Un-mount all partitions: `umount -lR /mnt`
 3. Shutdown system: `shutdown now`
-4. Remove USB-drive and turn the pc back on 
+4. Remove USB-drive and turn the pc back on
+
+# Install yay
+
+https://github.com/Jguer/yay
+1. Clone the git repo: `git clone https://aur.archlinux.org/yay.git`
+2. Go into the folder: `cd yay`
+3. Create the package: `makepkg -si`
