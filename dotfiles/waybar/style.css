@@ -48,6 +48,7 @@ window#waybar {
 
 #tray {
     padding: 3px 10px;
+    padding-right: 5px;
     background-color: #2b2b2b;
     border-radius: 7px;
 }
@@ -81,4 +82,9 @@ window#waybar {
     animation-timing-function: cubic-bezier(.42,0,.58,1);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#custom-arch,
+#custom-hypr {
+    color: #5fad56;
 }

@@ -5,12 +5,14 @@
     "modules-left": [
         "clock",
         "hyprland/workspaces",
-		"network"
+		"network",
+		"custom/arch"
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
+		"custom/hypr",
         "pulseaudio",
         "memory",
         "cpu",
@@ -20,6 +22,14 @@
         "power-profiles-daemon",
         "tray"
     ],
+	"custom/arch": {
+		"format": "󰣇",
+		"tooltip-format": "Arch linux"
+	},
+	"custom/hypr": {
+		"format": "",
+		"tooltip-format": "Hyprland"
+	},
     
     "hyprland/window": {
         "format": "{}",
@@ -109,11 +119,11 @@
 			"on-scroll": 1,
 			"on-click-right": "mode",
 			"format": {
-				"months": "<span color='#268bd2'><b>{}</b></span>",
-				"days": "<span color='#ffffff'><b>{}</b></span>",
-				"weeks": "<span color='#268bd2'><b>W{}</b></span>",
-				"weekdays": "<span color='#859900'><b>{}</b></span>",
-				"today": "<span color='#c03836'><b><u>{}</u></b></span>"
+				"months": "<span color='#88292f'><b>{}</b></span>",
+				"days": "<span color='#5c5d8d'><b>{}</b></span>",
+				"weeks": "<span color='#5FAD56'><b>W{}</b></span>",
+				"weekdays": "<span color='#5FAD56'><b>{}</b></span>",
+				"today": "<span color='#f7a278'><b><u>{}</u></b></span>"
 			}
 		},
 		"actions": {
