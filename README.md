@@ -95,3 +95,16 @@ https://github.com/Jguer/yay
 4. Install the hypr-eco-system: `yay -S hyprland hypridle hyperlock hyprpaper hyprpicker hyprshot`
 5. Install needed programs: `yay -S kitty dolphin wofi firefox waybar`
 6. Install needed fonts: `yay -S ttf-font-awesome ttf-nerd-fonts-symbols-mono`
+
+# Install vscode
+
+1. Get vscode: `yay -S visual-studio-code-bin`
+2. Configure to show icons by adding the following to `>Open user settings` with `ctrl+shift+P`:
+```
+{
+    "editor.fontFamily": "'Droid Sans Mono','Symbols Nerd Font Mono', 'JetBrains Mono', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 18,
+    "terminal.integrated.fontFamily": "'Droid Sans Mono','Symbols Nerd Font Mono', 'JetBrains Mono', monospace"
+}
+```
