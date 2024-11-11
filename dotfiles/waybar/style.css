@@ -1,157 +1,84 @@
 * {
-    font-size: 12px;
-    font-family: monospace;
+    font-size: 15px;
+    font-family: "Symbols Nerd Font Mono";
 }
 
 tooltip label {
-    font-size: 16px;
+    font-size: 15px;
+    color: #5fad56;
 }
 
 window#waybar {
     background: transparent;
-    color: #fdf6e3;
 }
 
-#custom-right-arrow-dark,
-#custom-left-arrow-dark,
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-    font-size: 24px;
-    color: #1a1a1a;
-}
-
-/* #custom-right-arrow-dark,
-#custom-left-arrow-dark {
-    color: #1a1a1a;
-}
-
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-    color: #000000;
+.modules-left,
+.modules-center,
+.modules-right {
     background: #1a1a1a;
-} */
-
-#workspaces,
-#clock.1,
-#clock.2,
-#clock.3,
-#pulseaudio,
-#memory,
-#cpu,
-#battery,
-#disk,
-#tray,
-#custom-user,
-#power-profiles-daemon,
-#network,
-#backlight,
-#custom-lock {
-    background: #1a1a1a;
+    padding: 3px 3px;
+    border-radius: 10px;
 }
 
+.module,
 #workspaces button {
-    padding: 0 20px;
-    color: #fdf6e3;
+    padding: 0px 10px;
+    color: #5c5d8d;
+}
+:hover.module {
+    color: #f7a278;
 }
 
+#workspaces button:hover {
+    color: #f7a278;
+    border-color: #1a1a1a;
+}
 #workspaces button.active {
-    background-color: #414141;
+    color: #5fad56;
     border-radius: 20px;
 }
-
-#workspaces.1 button:hover {
-    color: #6c71c4;
-    border-color: #1a1a1a;
-}
-#workspaces.2 button:hover {
-    color: #2aa198;
-    border-color: #1a1a1a;
-}
-
 #workspaces button.urgent {
-    color: #c03836;
+    color: #88292f;
     border-radius: 20px;
 }
 
-#pulseaudio,
-#custom-lock {
-    color: #268bd2;
+#power-profiles-daemon {
+    padding-left: 0px;
 }
 
-#memory,
-#workspaces.2 button {
-    color: #2aa198;
-}
-
-#cpu,
-#workspaces.1 button.active {
-    color: #6c71c4;
-}
-
-#battery,
-#power-profiles-daemon,
-#backlight {
-    color: #859900;
-}
-
-#disk,
-#network {
-    color: #b58900;
-}
-
-#clock.1,
-#clock.3 {
-    color: #ffd900;
-}
-
-#clock.2 {
-    color: #ff9100;
-    font-weight: bold;
-}
-
-#clock,
-#pulseaudio,
-#memory,
-#cpu,
-#battery,
-#disk,
-#custom-user,
-#power-profiles-daemon,
-#network,
-#backlight,
-#custom-lock {
-    padding: 0 10px;
+#tray {
+    padding: 3px 10px;
+    background-color: #2b2b2b;
+    border-radius: 7px;
 }
 
 @keyframes blink_high {
     to {
-        color: #859900;
+        color: #5fad56;
     }
 }
 
 #battery.overcharged.charging {
-    color: #001aff;
     animation-name: blink_high;
-    animation-duration: 2s;
-    animation-timing-function: linear;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(.2,0,0,1);
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
 @keyframes blink_low {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        color: #ffffff;
+        background-color: #88292f;
+        border-radius: 10px;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    border-radius: 20px;
     animation-name: blink_low;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
+    border-radius: 10px;
+    animation-duration: .8s;
+    animation-timing-function: cubic-bezier(.42,0,.58,1);
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
