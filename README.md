@@ -32,7 +32,7 @@ https://wiki.archlinux.org/title/Iwd#iwctl
 
 # Install Arch-Linux
 
-1. Install: `pacstrap /mnt base  base-devel linux linux-firmware neofetch git sudo nano <amd/intel>-ucode networkmanager bluez bluez-utils`
+1. Install: `pacstrap /mnt base  base-devel linux linux-firmware neofetch git sudo nano bat <amd/intel>-ucode networkmanager bluez bluez-utils pulseaudio`
 2. Generate the file system: `genfstab -U /mnt >> /mnt/etc/fstab`
 3. Jump into the new system: `arch-chroot /mnt`
 
@@ -80,6 +80,7 @@ https://github.com/Jguer/yay
 1. Clone the git repo: `git clone https://aur.archlinux.org/yay.git`
 2. Go into the folder: `cd yay`
 3. Create the package: `makepkg -si`
+4. Add color: `sudo nano /etc/pacman.conf` and comment out `Color`
 
 # Create a system snapshot with timeshift
 
@@ -93,3 +94,4 @@ https://github.com/Jguer/yay
 3. Go into the dotfiles directory: `cd system_repo/dotfiles` and type: `stow . --target=../../.config`
 4. Install the hypr-eco-system: `yay -S hyprland hypridle hyperlock hyprpaper hyprpicker hyprshot`
 5. Install needed programs: `yay -S kitty dolphin wofi firefox waybar`
+6. Install needed fonts: `yay -S ttf-font-awesome ttf-nerd-fonts-symbols-mono`
