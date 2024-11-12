@@ -87,14 +87,15 @@ https://github.com/Jguer/yay
 1. Install timeshift: `yay -S timeshift`
 2. Create a snapshot with `sudo timeshift --create --comment "<your comment>"`
 
-# Install Hyprland
+# Install Hyprland and contiguring the look
 
 1. Get dotfiles: `git clone https://github.com/JuliusRye/system_repo.git`
 2. Install symlink tool: `yay -S stow`
 3. Go into the dotfiles directory: `cd system_repo/dotfiles` and type: `stow . --target=../../.config`
 4. Install the hypr-eco-system: `yay -S hyprland hypridle hyperlock hyprpaper hyprpicker hyprshot`
-5. Install needed programs: `yay -S kitty dolphin wofi firefox waybar`
-6. Install needed fonts: `yay -S ttf-font-awesome ttf-nerd-fonts-symbols-mono`
+5. Install needed programs: `yay -S kitty dolphin wofi firefox waybar starship`
+6. Install needed fonts: `yay -S ttf-font-awesome ttf-nerd-fonts-symbols-mono ttf-cascadia-code-nerd`
+7. Make terminal look pretty: `sudo nano .bashrc` and add `eval "$(starship init bash)"` at the end of the file
 
 # Install vscode
 
