@@ -5,22 +5,22 @@
 
 window {
     margin: 0px;
-    border: 0px solid #5FAD56;
+    border: 0px solid #66BB6A;
     background-color: transparent;
 }
 
 #input {
     margin: 5px;
-    border: 2px solid #5FAD56;
+    border: 2px solid #66BB6A;
     border-radius: 10px;
-    background-color: #2B2B2B;
+    background-color: #242424;
 } 
 
 #scroll {
     margin: 5px;
     border: 2px solid #5C5D8D;
     border-radius: 10px;
-    background-color: #2B2B2B;
+    background-color: #242424;
 }
 
 #outer-box {
@@ -42,7 +42,7 @@ window {
     color: white;
 }
 
-/* #selected {
+#selected {
     border-radius: 10px;
-    background-color: #1A1A1A;
-} */
+    background-color: transparent;
+}
