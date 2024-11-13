@@ -1,6 +1,6 @@
 format = """
 [](fg:#1A1A1A)\
-[ 󰣇  ](bg:#1A1A1A fg:#5FAD56)\
+[ 󰣇  ](bg:#1A1A1A fg:#66BB6A)\
 [](bg:#2B2B2B fg:#1A1A1A)\
 $git_branch\
 $git_status\
@@ -11,6 +11,7 @@ $nodejs\
 $rust\
 $golang\
 $php\
+$python\
 [](bg:#2B2B2B fg:#1A1A1A)\
 $time\
 [](fg:#1A1A1A)\
@@ -38,6 +39,11 @@ format = '[[ $symbol $branch ](fg:#5C5D8D bg:#2B2B2B)]($style)'
 style = "bg:#2B2B2B"
 format = '[[($all_status$ahead_behind )](fg:#5C5D8D bg:#2B2B2B)]($style)'
 
+[python]
+symbol = ""
+style = "bg:#2B2B2B"
+format = '[[ $symbol ($version) - $virtualenv ](fg:#5C5D8D bg:#2B2B2B)]($style)'
+
 [nodejs]
 symbol = ""
 style = "bg:#2B2B2B"
@@ -62,4 +68,4 @@ format = '[[ $symbol ($version) ](fg:#5C5D8D bg:#2B2B2B)]($style)'
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#2B2B2B"
-format = '[[  $time ](fg:#5FAD56 bg:#1A1A1A)]($style)'
+format = '[[  $time ](fg:#66BB6A bg:#1A1A1A)]($style)'
