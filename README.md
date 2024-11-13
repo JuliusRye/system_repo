@@ -98,6 +98,19 @@ https://github.com/Jguer/yay
 6. Install needed programs: `yay -S kitty dolphin wofi firefox waybar starship bitwarden`
 7. Install needed fonts: `yay -S ttf-font-awesome ttf-nerd-fonts-symbols-mono ttf-cascadia-code-nerd`
 8. Make terminal look pretty: `sudo nano .bashrc` and add `eval "$(starship init bash)"` at the end of the file
+9. Verify that it works by starting hyprland: `Hyprland`
+
+# Change/add system theme
+
+1. Use `nwg-look` to change themes with a UI. Install it with `yay -S nwg-look`
+2. Find themes by installing them from the AUR or downloading them from places like this: https://www.gnome-look.org
+    - Used theme: [Orchis gtk theme](https://www.gnome-look.org/p/1357889) `.themes`
+    - Used icons: [BeautyLine](https://www.gnome-look.org/p/1425426) `.icons`
+    - Used cursor: [Sweet cursors](https://www.gnome-look.org/p/1393084) `.icons`
+4. Unpack files with `tar -xvzf <file-name>.tar.gz` or `tar -xvJf <file-name>.tar.xz`
+5. Place the unpacked files in `.themes` or `.icons` depending on the file.
+
+May be usefull: https://github.com/MathisP75/Hyprland-Multi-Theme
 
 # Install vscode
 
