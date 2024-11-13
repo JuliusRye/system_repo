@@ -124,3 +124,23 @@ May be usefull: https://github.com/MathisP75/Hyprland-Multi-Theme
     "terminal.integrated.fontFamily": "'Droid Sans Mono','Symbols Nerd Font Mono', 'JetBrains Mono', monospace"
 }
 ```
+
+# Disable USB wake from sleep
+
+`bat /proc/acpi/wakeup` will display what can wake the system from sleep
+1. Create a new service file: `sudo nano /etc/systemd/system/acpi-wakeup.service` with the content:
+```
+[Unit]
+Description=Disable ACPI Wakeup Devices
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'echo XHC0 > /proc/acpi/wakeup && echo XHC1 > /proc/acpi/wakeup'
+
+[Install]
+WantedBy=multi-user.target
+```
+2. Reload the systemd daemon to recognize the new service: `sudo systemctl daemon-reload`
+3. Enable the service to run at boot:`sudo systemctl enable acpi-wakeup.service`
+4. (Optional) Test the service immediately: `sudo systemctl start acpi-wakeup.service`
