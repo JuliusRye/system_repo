@@ -95,7 +95,7 @@ https://github.com/Jguer/yay
 3. Go into the dotfiles directory: `cd system_repo/dotfiles` and type: `stow . --target=../../.config`
 4. Install the hypr-eco-system: `yay -S hyprland hypridle hyperlock hyprpaper hyprpicker hyprshot`
 5. Install waybar apps: `yay -S pamixer pavucontrol btop ncdu network-manager-applet blueman`
-6. Install needed programs: `yay -S kitty dolphin wofi firefox waybar starship bitwarden`
+6. Install needed programs: `yay -S kitty nemo wofi firefox waybar starship bitwarden`
 7. Install needed fonts: `yay -S ttf-font-awesome ttf-nerd-fonts-symbols-mono ttf-cascadia-code-nerd`
 8. Make terminal look pretty: `sudo nano .bashrc` and add `eval "$(starship init bash)"` at the end of the file
 9. Verify that it works by starting hyprland: `Hyprland`
