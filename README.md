@@ -45,6 +45,7 @@ https://wiki.archlinux.org/title/Iwd#iwctl
 5. Check by switching to the user `su - <user_name>` and running `sudo pacman -Syu`. Exit by typing `exit`
 6. Enable network: `systemctl enable NetworkManager`
 7. Enable bluetooth: `systemctl enable bluetooth`
+8. Enable pulseaudio: `systemctl --user enable pulseaudio`
 
 # Set ups
 
