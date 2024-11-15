@@ -95,7 +95,7 @@ https://github.com/Jguer/yay
 3. Go into the dotfiles directory: `cd system_repo/dotfiles` and type: `stow . --target=../../.config`
 4. Install the hypr-eco-system: `yay -S hyprland hypridle hyperlock hyprpaper hyprpicker hyprshot`
 5. Install waybar apps: `yay -S pamixer pavucontrol btop ncdu network-manager-applet blueman swaync`
-6. Install needed programs: `yay -S kitty nemo wofi firefox waybar starship bitwarden polkit-gnome`
+6. Install needed programs: `yay -S kitty nemo wofi firefox waybar starship bitwarden polkit-gnome fzf`
 7. Install needed fonts: `yay -S ttf-font-awesome ttf-nerd-fonts-symbols-mono ttf-cascadia-code-nerd`
 8. Make terminal look pretty: `sudo nano .bashrc` and add `eval "$(starship init bash)"` at the end of the file
 9. Verify that it works by starting hyprland: `Hyprland`
@@ -124,23 +124,3 @@ May be usefull: https://github.com/MathisP75/Hyprland-Multi-Theme
     "terminal.integrated.fontFamily": "'Droid Sans Mono','Symbols Nerd Font Mono', 'JetBrains Mono', monospace"
 }
 ```
-
-# Disable USB wake from sleep
-
-`bat /proc/acpi/wakeup` will display what can wake the system from sleep
-1. Create a new service file: `sudo nano /etc/systemd/system/acpi-wakeup.service` with the content:
-```
-[Unit]
-Description=Disable ACPI Wakeup Devices
-After=suspend.target
-
-[Service]
-Type=oneshot
-ExecStart=/bin/sh -c 'echo XHC0 > /proc/acpi/wakeup && echo XHC1 > /proc/acpi/wakeup'
-
-[Install]
-WantedBy=multi-user.target
-```
-2. Reload the systemd daemon to recognize the new service: `sudo systemctl daemon-reload`
-3. Enable the service to run at boot:`sudo systemctl enable acpi-wakeup.service`
-4. (Optional) Test the service immediately: `sudo systemctl start acpi-wakeup.service`
