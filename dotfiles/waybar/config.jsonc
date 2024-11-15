@@ -106,8 +106,8 @@
 		]
 	},
 	"clock": {
-		"format": "󰃰 {:%H:%M %Z}",
-		"format-alt": "󰃰 {:%H:%M:%S %Z}",
+		"format": "{:%d %h  󰃰 %H:%M %Z}",
+		"format-alt": "{:%d %h  󰃰 %H:%M:%S %Z}",
 		"interval": 1,
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"timezone": "Europe/Berlin",
