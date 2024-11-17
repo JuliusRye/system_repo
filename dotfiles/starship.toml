@@ -29,6 +29,8 @@ truncation_symbol = "…/"
 "Music" = " "
 "Pictures" = " "
 "system_repo" = " "
+"steam" = " "
+"Steam" = " "
 
 [git_branch]
 symbol = ""

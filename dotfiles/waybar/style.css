@@ -6,6 +6,7 @@
 tooltip label {
     font-size: 15px;
     color: #66BB6A;
+    font-family: "Caskaydia Cove Nerd Font";
 }
 
 window#waybar {

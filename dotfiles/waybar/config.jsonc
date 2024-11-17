@@ -46,7 +46,7 @@
 		"show-special": true,
 		"all-outputs": true,
 		"format": "{icon}",
-		"format-icons": {
+		"format-icons": { // nf-md-<name>_box_multiple
 			"1": "󰼏",
 			"2": "󰼐",
 			"3": "󰼑",
@@ -57,18 +57,18 @@
 			"8": "󰼖",
 			"9": "󰼗",
 			"10": "󰼎", // 󰿪
-            "special": "󰼘"
+            "special": "󰤴"
 		}
 	},
 	"network": {
 		// "interface": "wlp2s0",
 		"format": "{ifname}",
 		"format-wifi": "{essid} ({signalStrength}%) ",
-		"format-ethernet": "{ipaddr} ",
+		"format-ethernet": "{ipaddr} ",
 		"format-disconnected": "Disconnected", //An empty format will hide the module.
 		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
 		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-format-ethernet": "{ifname} ",
 		"tooltip-format-disconnected": "Disconnected",
 		"max-length": 50
 	},
@@ -141,8 +141,13 @@
 	},
 	"cpu": {
 		"interval": 5,
-		"format": " {usage}%",
-		"on-click": "kitty -- btop"
+		"format": "{icon} {usage}%",
+		"on-click": "kitty -- btop",
+		"format-icons": [
+			"󰾆",
+			"󰾅",
+			"󰓅"
+		]
 	},
 	"battery": {
 		"bat": "BAT0",
@@ -170,7 +175,7 @@
 	},
 	"power-profiles-daemon": {
 		"format": "{icon}",
-		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip-format": "Power profile:\t{profile}\nDriver:\t\t{driver}",
 		"tooltip": true,
 		"format-icons": {
 			"default": "",
@@ -182,7 +187,8 @@
 	"disk": {
 		"interval": 5,
 		"format": "󰋊 {percentage_used:2}%",
-		"tooltip-format": "{free} remaining",
+		"unit": "GB",
+		"tooltip-format": "Free:\t{specific_free:6.2f} GB\nUsed:\t{specific_used:6.2f} GB\nTotal:\t{specific_total:6.2f} GB",		
 		"path": "/",
 		"on-click": "kitty -- ncdu"
 	},
