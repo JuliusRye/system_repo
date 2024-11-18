@@ -63,7 +63,8 @@ window#waybar {
     }
 }
 
-#battery.overcharged.charging {
+#battery.overcharged.charging,
+#battery.full {
     animation-name: blink_high;
     animation-duration: 1.5s;
     animation-timing-function: cubic-bezier(.2,0,0,1);
