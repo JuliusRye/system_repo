@@ -32,7 +32,7 @@ https://wiki.archlinux.org/title/Iwd#iwctl
 
 # Install Arch-Linux
 
-1. Install: `pacstrap /mnt base  base-devel linux linux-firmware neofetch git sudo nano bat <amd/intel>-ucode networkmanager bluez bluez-utils pulseaudio`
+1. Install: `pacstrap /mnt base  base-devel linux linux-firmware neofetch git sudo nano bat <amd/intel>-ucode networkmanager bluez bluez-utils pulseaudio pulseaudio-bluetooth`
 2. Generate the file system: `genfstab -U /mnt >> /mnt/etc/fstab`
 3. Jump into the new system: `arch-chroot /mnt`
 
