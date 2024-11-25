@@ -23,8 +23,12 @@
         "tray"
     ],
 	"custom/arch": {
-		"format": "󰣇",
-		"tooltip-format": "Arch linux"
+		"exec": "~/.config/waybar/scripts/pomodoro_timer.sh",
+		"return-type": "plain",
+		"interval": 1,
+		"on-click": "~/.config/waybar/scripts/pomodoro_timer.sh left",
+		"on-click-right": "~/.config/waybar/scripts/pomodoro_timer.sh right",
+		"on-click-middle": "~/.config/waybar/scripts/pomodoro_timer.sh middle"
 	},
 	"custom/hypr": {
 		"format": "",

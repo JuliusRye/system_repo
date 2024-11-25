@@ -21,9 +21,12 @@ window#waybar {
     border-radius: 10px;
 }
 
-.module,
-#workspaces button {
+.module {
     padding: 0px 10px;
+    color: #5c5d8d;
+}
+#workspaces button {
+    padding: 0px 5px;
     color: #5c5d8d;
 }
 :hover.module {
