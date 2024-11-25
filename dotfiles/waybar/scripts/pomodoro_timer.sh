@@ -2,7 +2,7 @@
 
 # Configuration
 WORK_DURATION=25   # Work duration in minutes
-BREAK_DURATION=1   # Break duration in minutes
+BREAK_DURATION=5   # Break duration in minutes
 TIMER_FILE="/tmp/pomodoro_timer"
 STATE_FILE="/tmp/pomodoro_state"
 
