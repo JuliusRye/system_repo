@@ -4,14 +4,13 @@
 WORK_DURATION=25   # Work duration in minutes
 BREAK_DURATION=5   # Break duration in minutes
 TIMER_FILE="/tmp/pomodoro_timer"
-STATE_FILE="/tmp/pomodoro_state"
 
 # Initialize or read timer state
 if [[ ! -f "$TIMER_FILE" ]]; then
-    echo "$(($(date +%s) + WORK_DURATION * 60))|work|running" > "$TIMER_FILE"
+    echo "$(($(date +%s) + WORK_DURATION * 60))|work|inactive|sent" > "$TIMER_FILE"
 fi
 
-IFS='|' read -r END_TIME STATE STATUS < "$TIMER_FILE"
+IFS='|' read -r END_TIME STATE STATUS NOTIFICATION < "$TIMER_FILE"
 
 # Handle click events
 if [[ "$1" == "right" && "$STATUS" != "inactive" ]]; then
@@ -21,7 +20,7 @@ if [[ "$1" == "right" && "$STATUS" != "inactive" ]]; then
     else
         STATUS="running"
     fi
-    echo "$END_TIME|$STATE|$STATUS" > "$TIMER_FILE"
+    echo "$END_TIME|$STATE|$STATUS|$NOTIFICATION" > "$TIMER_FILE"
 elif [[ "$1" == "left" && "$STATUS" != "inactive" ]]; then
     # Jump to the next state
     if [[ $STATE == "work" ]]; then
@@ -31,7 +30,7 @@ elif [[ "$1" == "left" && "$STATUS" != "inactive" ]]; then
         STATE="work"
         END_TIME=$(($(date +%s) + WORK_DURATION * 60))
     fi
-    echo "$END_TIME|$STATE|$STATUS" > "$TIMER_FILE"
+    echo "$END_TIME|$STATE|$STATUS|$NOTIFICATION" > "$TIMER_FILE"
 elif [[ "$1" == "middle" ]]; then
     # Toggle enable/disable
     if [[ $STATUS == "running" ]]; then
@@ -41,24 +40,35 @@ elif [[ "$1" == "middle" ]]; then
         STATE="work"
         END_TIME=$(($(date +%s) + WORK_DURATION * 60))
     fi
-    echo "$END_TIME|$STATE|$STATUS" > "$TIMER_FILE"
+    echo "$END_TIME|$STATE|$STATUS|$NOTIFICATION" > "$TIMER_FILE"
 fi
 
 # Update time and behavior
 CURRENT_TIME=$(date +%s)
 if [[ $STATUS == "running" ]] && [[ $CURRENT_TIME -ge $END_TIME ]]; then
     STATUS="stopped"
-    echo "$END_TIME|$STATE|$STATUS" > "$TIMER_FILE"
+    echo "$END_TIME|$STATE|$STATUS|$NOTIFICATION" > "$TIMER_FILE"
 fi
 
 # Calculate remaining time
-if [[ $STATUS == "running" ]]; then
-    REMAINING_TIME=$((END_TIME - CURRENT_TIME))
-elif [[ $STATUS == "paused" ]]; then
-    REMAINING_TIME=$((END_TIME - CURRENT_TIME))
-    END_TIME=$((END_TIME+1)) # Adds a second every second
-    echo "$END_TIME|$STATE|$STATUS" > "$TIMER_FILE"
+REMAINING_TIME=$((END_TIME - CURRENT_TIME))
+if [[ $REMAINING_TIME -gt 0 ]]; then
+    if [[ $STATUS == "paused" ]]; then # Update end time if paused
+        END_TIME=$((END_TIME+1)) # Adds a second every second
+        echo "$END_TIME|$STATE|$STATUS|$NOTIFICATION" > "$TIMER_FILE"
+    fi
+    NOTIFICATION="waiting"
+    echo "$END_TIME|$STATE|$STATUS|$NOTIFICATION" > "$TIMER_FILE"
 else
+    if [[ $NOTIFICATION == "waiting" ]]; then # Only sent notification once
+        if [[ $STATE == "work" ]]; then
+            notify-send -i timeshift -t 1000000 "Time to take a 5 minute break"
+        else
+            notify-send -i timeshift -t 1000000 "Time to get back to work"
+        fi
+    fi
+    NOTIFICATION="sent"
+    echo "$END_TIME|$STATE|$STATUS|$NOTIFICATION" > "$TIMER_FILE"
     REMAINING_TIME=0
 fi
 MINUTES=$((REMAINING_TIME / 60))
