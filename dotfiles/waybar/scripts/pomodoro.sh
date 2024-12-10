@@ -3,7 +3,7 @@
 # Configuration
 WORK_DURATION=25   # Work duration in minutes
 BREAK_DURATION=5   # Break duration in minutes
-TIMER_FILE="/tmp/pomodoro_timer"
+TIMER_FILE="$HOME/.config/waybar/scripts/pomodoro"
 
 # Initialize or read timer state
 if [[ ! -f "$TIMER_FILE" ]]; then
@@ -40,7 +40,7 @@ elif [[ "$1" == "next" ]]; then
         NOTIFICATION="waiting"
     elif [[ "$STATE" == "break" || "$STATE" == "break paused" ]]; then
         STATE="work"
-        END_TIME=$((CURRENT_TIME + WORK_DURATION))
+        END_TIME=$((CURRENT_TIME + WORK_DURATION*60))
         NOTIFICATION="waiting"
     fi
 fi
@@ -75,6 +75,8 @@ elif [[ "$STATE" == "break" ]]; then
     ICON=""
 elif [[ "$STATE" == "break paused" ]]; then
     ICON="-󱖐"
+else
+    echo "$(($(date +%s) + WORK_DURATION * 60))|$((WORK_DURATION * 60))|inactive|sent" > "$TIMER_FILE"
 fi
 
 # Update the pomodoro timer
